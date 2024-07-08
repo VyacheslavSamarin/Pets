@@ -9,13 +9,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{E9F02514-1E83-47AD-A400-CF1979509E49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pets.Persistence", "Pets.Persistence\Pets.Persistence.csproj", "{6B859083-731C-4DA7-A5FE-25C0C096AEAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pets.Persistence", "Pets.Persistence\Pets.Persistence.csproj", "{6B859083-731C-4DA7-A5FE-25C0C096AEAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pets.Application", "Pets.Application\Pets.Application.csproj", "{667015F4-4612-4228-A49A-A3A783C3B71C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pets.Application", "Pets.Application\Pets.Application.csproj", "{667015F4-4612-4228-A49A-A3A783C3B71C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pets.Domain", "Pets.Domain\Pets.Domain.csproj", "{F4F5AC97-EBFB-4E17-96D5-1A773D7619F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pets.Domain", "Pets.Domain\Pets.Domain.csproj", "{F4F5AC97-EBFB-4E17-96D5-1A773D7619F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pets.WebApi", "Pets.WebApi\Pets.WebApi.csproj", "{1C3648C2-D2BD-44BD-A987-54EB388B8AC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pets.WebApi", "Pets.WebApi\Pets.WebApi.csproj", "{1C3648C2-D2BD-44BD-A987-54EB388B8AC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{7772B5F9-90C0-472E-866C-A9A70516CCC5}"
+	ProjectSection(SolutionItems) = preProject
+		openapi.yaml = openapi.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
