@@ -22,6 +22,11 @@ namespace Pets.Application.Pets.Commands
                 Price = command.Price,
                 Birthday = command.Birthday,
                 Description = command.Description,  
+                Type = command.Type,
+                DateAdded = DateTime.UtcNow,
+                DateUpdated = DateTime.UtcNow,
+                Phone = command.Phone,
+                Owner = command.Phone,
             };
             
             await _dbContext.Pets.AddAsync(pet, cancellation);

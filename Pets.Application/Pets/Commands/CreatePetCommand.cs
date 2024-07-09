@@ -13,6 +13,10 @@ namespace Pets.Application.Pets.Commands
         public double Price { get; set; }
         public DateTime Birthday{ get; set; }
         public string Description { get; set; }
+        public string Type { get; set; }
+        public string Phone { get; set; }
+        public string Owner { get; set; }
+
 
     }
 }

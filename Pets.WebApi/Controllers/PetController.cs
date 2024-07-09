@@ -25,6 +25,22 @@ namespace Pets.WebApi.Controllers
             return Ok(vm);
         }
 
+        [HttpGet("by-price")]
+        public async Task<ActionResult<PetListVm>> GetAllByPrice([FromQuery] GetAllByPriceRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var query = new GetPetListByPriceQuery
+            {
+                MaxPrice = request.MaxPrice,
+                MinPrice = request.MinPrice,
+            };
+            var vm = await Mediator.Send(query);
+            return Ok(vm);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<PetDetailVm>> Get(int id)
         {
@@ -38,17 +54,26 @@ namespace Pets.WebApi.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<Guid>> Create([FromBody] CreatePetDto createPetDto)
+        public async Task<ActionResult<int>> Create([FromBody] CreatePetDto createPetDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var command = _mapper.Map<CreatePetCommand>(createPetDto);
             var noteId = await Mediator.Send(command);
             return Ok(noteId);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdatePetDto updatePetDto)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id,[FromBody] UpdatePetDto updatePetDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var command = _mapper.Map<UpdatePetCommand>(updatePetDto);
+            command.Id = id;
             await Mediator.Send(command);
             return NoContent();
         }
@@ -62,6 +87,17 @@ namespace Pets.WebApi.Controllers
             };
             await Mediator.Send(command);
             return NoContent();
+        }
+        [HttpGet("by-type")]
+        public async Task<ActionResult<PetListVm>> GetAllByType([FromQuery] string type)
+        {
+
+            var query = new GetPetListByTypeQuery
+            {
+                Type = type,
+            };
+            var vm = await Mediator.Send(query);
+            return Ok(vm);
         }
     }
 }

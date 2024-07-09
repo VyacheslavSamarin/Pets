@@ -26,10 +26,39 @@ namespace Pets.Application.Pets.Commands
             {
                 throw new NotFoundException(nameof(Pet), command.Id);
             }
-            entity.Birthday = command.Birthday;
-            entity.Price = command.Price;
-            entity.Description = command.Description;
-            entity.Age = command.Age;
+            if (command.Age != 0)
+            {
+                entity.Age = command.Age;
+            }
+
+            if (command.Price != 0)
+            {
+                entity.Price = command.Price;
+            }
+
+            if (command.Birthday != default(DateTime))
+            {
+                entity.Birthday = command.Birthday;
+            }
+
+            if (command.Description != null)
+            {
+                entity.Description = command.Description;
+            }
+            if (command.Type != null)
+            {
+                entity.Type = command.Type;
+            }
+            if (command.Phone != null)
+            {
+                entity.Phone = command.Phone;
+            }
+            if (command.Owner != null)
+            {
+                entity.Owner = command.Owner;
+            }
+
+            entity.DateUpdated = DateTime.UtcNow;
             _dbContext.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;

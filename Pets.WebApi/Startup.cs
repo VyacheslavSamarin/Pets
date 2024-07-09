@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 
 using Pets.Application;
 using Pets.Persistence;
+using Pets.WebApi.Middleware;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Pets.WebApi
 {
