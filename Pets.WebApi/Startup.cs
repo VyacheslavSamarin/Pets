@@ -41,6 +41,7 @@ namespace Pets.WebApi
             }
             app.UseRouting();
             app.UseHttpsRedirection();
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {

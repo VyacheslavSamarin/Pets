@@ -9,19 +9,15 @@ namespace Pets.WebApi.Models
 {
     public class UpdatePetDto : IMapWith<UpdatePetCommand>
     {
-        [Required]
         public int? Age { get; set; }
-        [Required]
+
+        public string? Description { get; set; }
         public double? Price { get; set; }
         public DateTime Birthday { get; set; }
-        public string Description { get; set; }
-        [Required]
         [StringLength(20)]
         public string? Type { get; set; }
-        [Required]
         [RegularExpression(@"^\+?[1-9]\d{1,14}$", ErrorMessage = "The phone number is not valid.")]
         public string? Phone { get; set; }
-        [Required]
         [StringLength(20)]
         public string? Owner { get; set; }
         public void Mapping(Profile profile)

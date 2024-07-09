@@ -26,7 +26,7 @@ namespace Pets.Application.Pets.Commands
                 DateAdded = DateTime.UtcNow,
                 DateUpdated = DateTime.UtcNow,
                 Phone = command.Phone,
-                Owner = command.Phone,
+                Owner = command.Owner,
             };
             
             await _dbContext.Pets.AddAsync(pet, cancellation);

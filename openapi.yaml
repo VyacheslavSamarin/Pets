@@ -161,6 +161,28 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/PetListVm'
+  /api/Pet/by-owner:
+    get:
+      tags:
+        - Pet
+      parameters:
+        - name: owner
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PetListVm'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetListVm'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PetListVm'
 components:
   schemas:
     CreatePetDto:
@@ -272,36 +294,34 @@ components:
           nullable: true
       additionalProperties: false
     UpdatePetDto:
-      required:
-        - age
-        - owner
-        - phone
-        - price
-        - type
       type: object
       properties:
         age:
           type: integer
           format: int32
-        price:
-          type: number
-          format: double
-        birthday:
-          type: string
-          format: date-time
+          nullable: true
         description:
           type: string
           nullable: true
+        price:
+          type: number
+          format: double
+          nullable: true
+        birthday:
+          type: string
+          format: date-time
         type:
           maxLength: 20
           minLength: 0
           type: string
+          nullable: true
         phone:
-          minLength: 1
           pattern: ^\+?[1-9]\d{1,14}$
           type: string
+          nullable: true
         owner:
           maxLength: 20
           minLength: 0
           type: string
+          nullable: true
       additionalProperties: false

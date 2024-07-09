@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Pets.Application.Pets.Commands;
 using Pets.Application.Pets.Queries;
 using Pets.WebApi.Models;
+using System.Net;
+using System.Text;
 
 namespace Pets.WebApi.Controllers
 {
@@ -12,6 +14,9 @@ namespace Pets.WebApi.Controllers
     public class PetController : BaseController
     {
         private readonly IMapper _mapper;
+
+        private static string auth_token;
+
 
         public PetController(IMapper mapper) => _mapper = mapper;
 
@@ -66,7 +71,7 @@ namespace Pets.WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id,[FromBody] UpdatePetDto updatePetDto)
+        public async Task<IActionResult> Update(int id, [FromBody] UpdatePetDto updatePetDto)
         {
             if (!ModelState.IsValid)
             {
@@ -99,5 +104,18 @@ namespace Pets.WebApi.Controllers
             var vm = await Mediator.Send(query);
             return Ok(vm);
         }
+
+        [HttpGet("by-owner")]
+        public async Task<ActionResult<PetListVm>> GetAllByOwner([FromQuery] string owner)
+        {
+
+            var query = new GetPetListByOwnerQuery
+            {
+                Owner = owner,
+            };
+            var vm = await Mediator.Send(query);
+            return Ok(vm);
+        }
     }
 }
+
